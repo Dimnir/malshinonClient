@@ -1,0 +1,44 @@
+<hr>
+<div class="panel panel-info">
+    <div class="panel-heading text-center">
+        פרטי התלונה
+    </div><br>
+    <div dir="rtl">
+        <div class="row">
+            <div class="col-xs-12">
+                <p><u>
+                        תיאור
+                    </u></p>
+                <h4>
+                    {{ report.description }}
+                </h4>
+                <hr>
+                <p><u>
+                        מיקום
+                    </u></p>
+                <h4>
+                    {{ pPlace(report.place) }}
+                </h4>
+                <hr>
+                <p><u>
+                        סוג תלונה
+                    </u></p>
+                <h4>
+                    {{ pType(report.type) }}
+                </h4>
+                <hr>
+                <p><u>
+                        זמן
+                    </u></p>
+                <h4>
+                    {{ report.time | date:'dd/MM/yyyy - HH:mm:ss'}}
+                </h4>
+                <br><br><br>
+                <div class="row">
+                    <button class="btn btn-info" (click)="onEditReport()">עריכה</button>
+                    <button class="btn btn-secondary pull-left" (click)="onBack()">חזרה</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

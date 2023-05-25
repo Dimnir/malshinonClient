@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-xs-12">
+        <hr>
+        <div class="panel panel-success">
+
+            <div class="panel-heading text-center">{{ editMode? 'עדכון דיווח קיים' : 'יצירת דיווח חדש'}}</div>
+            <br>
+            <form [formGroup]="newReportForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="description" class="col-xs-12 text-right">נא לפרט על התלונה
+                                <small class="text-muted text-right">- יש לפרט כמה שיותר על מנת ליעל את התלונה</small>
+                            </label>
+
+                            <textarea name="description" id="description" cols="20" rows="6"
+                                class="form-control text-right" formControlName="description" dir="rtl"></textarea>
+                            <span
+                                *ngIf="!newReportForm.get('description').valid && newReportForm.get('description').touched"
+                                class="help-block pull-right">יש למלא פרטים על האירוע לפני הגשת התלונה</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="description" class="col-xs-12 text-right">נא לבחור את סוג התלונה
+                            <small class="text-muted text-right">- במקרה ולא מופיע סוג תלונה מתאים יש לציין
+                                הטרדה</small>
+                        </label>
+                        <select (change)="update($event)" class="selectpicker form-control" data-live-search="true"
+                            formControlName="type">
+                            <option class="text-right" *ngFor="let type of types" [value]="type"> {{ type }} </option>
+                        </select>
+                        <span *ngIf="!newReportForm.get('type').valid && newReportForm.get('type').touched"
+                            class="help-block pull-right">יש לבחור את סוג התלונה</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label for="description" class="col-xs-12 text-right">נא לבחור את מקום האירוע</label>
+                        <select (change)="update($event)" class="selectpicker form-control" data-live-search="true"
+                            formControlName="place">
+                            <option class="text-right" *ngFor="let place of places" [value]="place"> {{ place }}
+                            </option>
+                        </select>
+                        <span *ngIf="!newReportForm.get('place').valid && newReportForm.get('place').touched"
+                            class="help-block pull-right">יש לבחור את הרחוב שבו התרחש האירוע</span>
+                    </div>
+                </div>
+
+                <br><br><br><br><br>
+
+                <span *ngIf="!newReportForm.valid && newReportForm.touched" class="help-block pull-right">ניתן לשלוח
+                    תלונה
+                    רק לאחר מילוי כל הפרטים</span>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="btn-toolbar" role="toolbar">
+                            <button type="submit" [disabled]="!newReportForm.valid" class="btn btn-success pull-right">
+                                {{
+                                editMode? 'עדכן' : 'שלח' }} </button>
+                            <button type="button" class="btn btn-secondary" (click)="onCancel()">חזרה</button>
+                            <button type="button" class="btn btn-danger pull-right" (click)="onDelete()">מחק</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>

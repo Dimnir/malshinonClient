@@ -1,0 +1,9 @@
+<div class="panel panel-info">
+    <div class="panel-heading text-center">תלונות אחרונות</div>
+    <ul class="list-group">
+        <div class="col-xs-12">
+            <app-report-item *ngFor="let reportEl of reports; let i = index " [report]="reportEl"
+                [index]="i"></app-report-item>
+        </div>
+    </ul>
+</div>

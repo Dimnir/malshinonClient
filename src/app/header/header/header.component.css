@@ -1,0 +1,12 @@
+.nav-item>a:visited {
+    background-color: rgb(202, 235, 255);
+}
+
+.nav-item2>a:visited {
+    background-color: rgb(120, 196, 244);
+    color: rgb(2, 52, 128);
+}
+
+.navbar-default {
+    height: 50px;
+}

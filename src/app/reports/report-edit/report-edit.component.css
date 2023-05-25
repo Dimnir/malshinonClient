@@ -1,0 +1,16 @@
+textarea {
+    resize: none;
+  }
+
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+select.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.panel {
+  padding: 10px;
+  border: 0px;
+}
