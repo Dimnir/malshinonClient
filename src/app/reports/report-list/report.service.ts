@@ -28,6 +28,11 @@ export class ReportService {
 
   constructor(private http: HttpClient) { }
   ApiUrl = this.baseApiUrl.apiBaseUrl; // https://localhost:5001
+  alreadyLiked: boolean = false;
+
+  liked(){
+    this.alreadyLiked = true;
+  }
 
 
   convertFromDBtoClient(obj: any) { // api returns objects - convert them into reports
@@ -37,7 +42,8 @@ export class ReportService {
         element.place,
         element.description,
         element.type,
-        element.id));
+        element.id,
+        element.score));
     }))
   }
 
@@ -66,15 +72,15 @@ export class ReportService {
     this.reportsChanged.next(this.reports.slice()); // updates client report list
   }
 
-  updateReport(num: number, newReport: Report) {
-    let DBid = this.reports[num].id; // id to update
-    let oldTime = this.reports[num].time; // original submission time  
-    this.reports[num] = newReport; // client: report update
-    newReport.id = DBid; // set id to update
-    newReport.time = oldTime; // set old time to updated report to show original time in client reports list
-    this.updateReportInDb(DBid, newReport); // api: report update
-    this.reportsChanged.next(this.reports.slice()); // save changes to client reports list
-  }
+  // updateReport(num: number, newReport: Report) {
+  //   let DBid = this.reports[num].id; // id to update
+  //   let oldTime = this.reports[num].time; // original submission time  
+  //   this.reports[num] = newReport; // client: report update
+  //   newReport.id = DBid; // set id to update
+  //   newReport.time = oldTime; // set old time to updated report to show original time in client reports list
+  //   this.updateReportInDb(DBid, newReport); // api: report update
+  //   this.reportsChanged.next(this.reports.slice()); // save changes to client reports list
+  // }
 
   updateReportInDb(id: number, report: Report) {
     this.http.put(this.ApiUrl + '/api/reports/' + id, report).subscribe({
@@ -82,6 +88,15 @@ export class ReportService {
       error: error => console.log(error),
     })
   }
+
+  updateReport(newRep: Report) { // NEED TO ADD OPT TO LIKE 1 TIME PER USER
+    newRep.score += 1;
+    this.updateReportInDb(newRep.id, newRep); // api: report update
+    this.reportsChanged.next(this.reports.slice()); // save changes to client reports list
+  }
+
+
+
 
 
   // ********************** NON DB ***********************************

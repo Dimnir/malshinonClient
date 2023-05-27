@@ -13,6 +13,8 @@ import { ReportsComponent } from './reports/reports.component';
 import { AuthComponent } from './auth/auth.component';
 import { ReportStartComponent } from './reports/report-start/report-start.component';
 import { ReportEditComponent } from './reports/report-edit/report-edit.component';
+import { AboutComponent } from './about/about.component';
+import { ReportThanksComponent } from './reports/report-thanks/report-thanks.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { ReportEditComponent } from './reports/report-edit/report-edit.component
     AuthComponent,
     ReportStartComponent,
     ReportEditComponent,
+    AboutComponent,
+    ReportThanksComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,9 +2,12 @@
     background-color: rgb(202, 235, 255);
 }
 
-.nav-item2>a:visited {
+.nav-item1>a:visited {
     background-color: rgb(120, 196, 244);
-    color: rgb(2, 52, 128);
+}
+
+.nav-item2>a:visited {
+    background-color: rgb(120, 244, 161);
 }
 
 .navbar-default {

@@ -14,6 +14,7 @@ export class ReportDetailComponent implements OnInit, OnDestroy {
   report: Report;
   id: number;
   subscription: Subscription;
+  liked: boolean = false;
 
   constructor(
     private reportService: ReportService,
@@ -28,17 +29,26 @@ export class ReportDetailComponent implements OnInit, OnDestroy {
         this.report = this.reportService.getReport(this.id);
       }
     )
+    this.liked = this.reportService.alreadyLiked;
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
   }
 
-  onEditReport() {
-    this.router.navigate(['edit'], { relativeTo: this.route })
+  // onEditReport() {
+  //   this.router.navigate(['edit'], { relativeTo: this.route })
+  // }
+
+  onLikeReport() {
+    if (!this.reportService.alreadyLiked) {
+      this.reportService.alreadyLiked = true;
+      this.reportService.updateReport(this.report)
+      this.router.navigate(['../thanks'], { relativeTo: this.route })
+    }
   }
 
-  onBack(){
+  onBack() {
     this.router.navigate(['../'], { relativeTo: this.route })
   }
 
