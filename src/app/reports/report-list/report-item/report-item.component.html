@@ -6,9 +6,15 @@
                 {{ report.score }}
             </span>
 
-            {{ report.time | date: 'dd/MM - HH:mm' }}
-            {{ pType(report.type) }}
-            בשעה
+            <span>
+                {{pPlace(report.place)}}
+            </span>
+
+            <span class="pull-right">
+                {{ report.time | date: 'dd/MM - HH:mm' }}
+                -
+                {{ pType(report.type) }}
+            </span>
         </p>
     </div>
 </a>
