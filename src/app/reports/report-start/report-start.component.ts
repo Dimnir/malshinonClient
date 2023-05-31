@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportStartComponent implements OnInit {
 
-  placeName: string = 'שכונת גני אביב';
+  // placeName: string = 'שכונת גני אביב';
 
   constructor() { }
 

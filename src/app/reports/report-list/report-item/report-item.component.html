@@ -6,14 +6,17 @@
                 {{ report.score }}
             </span>
 
-            <span>
-                {{pPlace(report.place)}}
-            </span>
-
+            
             <span class="pull-right">
-                {{ report.time | date: 'dd/MM - HH:mm' }}
-                -
-                {{ pType(report.type) }}
+                &nbsp;| {{ report.time | date: 'dd/MM HH:mm' }}
+            </span>
+            
+            <span class="pull-right"><strong>
+                &nbsp; {{ pType(report.type) }}
+            </strong></span>
+            
+            <span class="pull-right"> 
+                <strong>{{pPlace(report.place)}}</strong> -
             </span>
         </p>
     </div>

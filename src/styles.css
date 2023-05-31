@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.panel {
+    opacity: .92;
+    padding: 5px;
+    border: none;
+}
